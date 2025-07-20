@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            animation: fadeInDown 2s ease-out;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #f8f8f8;
+            max-width: 800px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeInUp 2.5s ease-out;
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: #ff6b6b;
+            animation: heartbeat 2s infinite;
+            margin: 0 10px;
+        }
+
+        /* Rosas flotantes */
+        .rose {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.8;
+            animation: float 6s infinite linear;
+            z-index: 1;
+        }
+
+        .rose::before {
+            content: '🤍';
+            font-size: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .rose:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+        .rose:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 7s; }
+        .rose:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 9s; }
+        .rose:nth-child(4) { left: 40%; animation-delay: 0.5s; animation-duration: 6s; }
+        .rose:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 8s; }
+        .rose:nth-child(6) { left: 60%; animation-delay: 1.5s; animation-duration: 7s; }
+        .rose:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 9s; }
+        .rose:nth-child(8) { left: 80%; animation-delay: 4s; animation-duration: 6s; }
+        .rose:nth-child(9) { left: 90%; animation-delay: 0.8s; animation-duration: 8s; }
+
+        /* Pétalos flotantes más pequeños */
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+            animation: petals 10s infinite linear;
+            z-index: 2;
+        }
+
+        .petal::before {
+            content: '🤍';
+            font-size: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .petal:nth-child(odd) { left: 15%; animation-delay: 2s; animation-duration: 12s; }
+        .petal:nth-child(even) { left: 85%; animation-delay: 4s; animation-duration: 10s; }
+
+        /* Estrellas brillantes */
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            z-index: 1;
+        }
+
+        .star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 20%; left: 85%; animation-delay: 1s; }
+        .star:nth-child(3) { top: 70%; left: 10%; animation-delay: 2s; }
+        .star:nth-child(4) { top: 80%; left: 90%; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 30%; left: 5%; animation-delay: 3s; }
+        .star:nth-child(6) { top: 60%; left: 95%; animation-delay: 0.5s; }
+
+        .signature {
+            font-size: 1.2rem;
+            color: #ffd700;
+            font-style: italic;
+            margin-top: 30px;
+            animation: fadeIn 3s ease-out;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 50%, 100% {
+                transform: scale(1);
+            }
+            25%, 75% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes petals {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            .message {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Estrellas -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+    <!-- Rosas flotantes -->
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+    <div class="rose"></div>
+
+    <!-- Pétalos -->
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+
+    <div class="container">
+        <h1 class="title">Para Ti, Mi Amor</h1>
+        
+        <div class="message">
+            <span class="heart">💖</span>
+            Eres la razón por la que cada día tiene sentido, 
+            la melodía que hace que mi corazón baile de alegría.
+            <br><br>
+            Como estas rosas blancas que flotan hacia ti,
+            mi amor viaja cada segundo para encontrarte,
+            puro, sincero y eterno.
+            <br><br>
+            Eres mi hogar, mi refugio, mi felicidad infinita.
+            <span class="heart">💖</span>
+        </div>
+
+        <div class="signature">
+            Con todo mi amor, siempre tuyo ✨
+        </div>
+    </div>
+
+    <script>
+        // Crear más rosas dinámicamente
+        function createRose() {
+            const rose = document.createElement('div');
+            rose.className = 'rose';
+            rose.style.left = Math.random() * 100 + '%';
+            rose.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            rose.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(rose);
+
+            // Remover la rosa después de la animación
+            setTimeout(() => {
+                if (rose.parentNode) {
+                    rose.parentNode.removeChild(rose);
+                }
+            }, 10000);
+        }
+
+        // Crear rosas cada cierto tiempo
+        setInterval(createRose, 1500);
+
+        // Efecto de clic para crear corazones
+        document.addEventListener('click', function(e) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '20px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'float 3s ease-out forwards';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
